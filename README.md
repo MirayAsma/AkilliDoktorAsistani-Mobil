@@ -1,16 +1,32 @@
-# akilli_doktor_asistani
+# Akıllı Doktor Asistanı
 
-A new Flutter project.
+Bu proje, hastane yönetim sistemi için geliştirilmiş profesyonel bir mobil uygulamadır.
 
-## Getting Started
+## Özellikler
 
-This project is a starting point for a Flutter application.
+- Doktor ve hemşireler için giriş sistemi
+- Hasta kayıtları ve takibi
+- Randevu yönetimi
+- QR kod ile hızlı erişim
+- Biyometrik kimlik doğrulama
+- Karanlık/Açık tema desteği
 
-A few resources to get you started if this is your first Flutter project:
+## Kullanılan Teknolojiler
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Flutter
+- Dart
+- Provider (Durum Yönetimi)
+- Shared Preferences
+- Flutter Secure Storage
+- Mobile Scanner
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Kurulum
+
+```bash
+flutter pub get
+flutter run
+```
+
+## Geliştirilme Aşaması
+
+Bu uygulama aktif olarak geliştirilmektedir.
