@@ -4,6 +4,7 @@ import 'package:akilli_doktor_asistani/screens/home_screen.dart';
 import 'package:akilli_doktor_asistani/screens/qr_scanner_screen.dart';
 import 'package:akilli_doktor_asistani/utils/theme_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -164,11 +165,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       Row(
                         children: [
-                          IconButton(
-                            icon: const Icon(Icons.fingerprint),
-                            onPressed: _handleBiometricLogin,
-                            tooltip: 'Biyometrik Giriş',
-                          ),
+                          if (!kIsWeb) 
+                            IconButton(
+                              icon: const Icon(Icons.fingerprint),
+                              onPressed: _handleBiometricLogin,
+                              tooltip: 'Biyometrik Giriş',
+                            ),
                           IconButton(
                             icon: const Icon(Icons.qr_code),
                             onPressed: _handleQRLogin,

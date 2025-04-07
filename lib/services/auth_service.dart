@@ -1,9 +1,12 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:local_auth/local_auth.dart';
 import 'dart:convert';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class AuthService {
-  final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
+  final FlutterSecureStorage _secureStorage = kIsWeb
+      ? const FlutterSecureStorage(webOptions: WebOptions(dbName: 'akilli_doktor_storage'))
+      : const FlutterSecureStorage();
   final LocalAuthentication _localAuth = LocalAuthentication();
   
   static const String _userKey = 'user_data';
@@ -83,6 +86,14 @@ class AuthService {
 
   // Biometric login
   Future<Map<String, dynamic>> biometricLogin() async {
+    // Web platformunda biyometrik kimlik doğrulama desteklenmiyor
+    if (kIsWeb) {
+      return {
+        'success': false,
+        'message': 'Web tarayıcıda biyometrik doğrulama desteklenmiyor.',
+      };
+    }
+    
     try {
       // Check if device supports biometrics
       final canCheckBiometrics = await _localAuth.canCheckBiometrics;

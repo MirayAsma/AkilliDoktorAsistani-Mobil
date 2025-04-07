@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:akilli_doktor_asistani/screens/login_screen.dart';
 import 'package:akilli_doktor_asistani/services/auth_service.dart';
+import 'package:akilli_doktor_asistani/screens/patients_screen.dart';
 import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -162,7 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
       case 0:
         return _buildHomeTab();
       case 1:
-        return _buildPatientsTab();
+        return const PatientsScreen();
       case 2:
         return _buildAppointmentsTab();
       case 3:
@@ -467,107 +468,6 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(
             fontSize: 12,
             color: Theme.of(context).textTheme.bodySmall?.color,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildPatientsTab() {
-    // Mock patient data
-    final patients = [
-      {
-        'name': 'Ahmet Yılmaz',
-        'age': 45,
-        'gender': 'Erkek',
-        'condition': 'Hipertansiyon',
-        'lastVisit': '23.03.2025',
-      },
-      {
-        'name': 'Ayşe Demir',
-        'age': 32,
-        'gender': 'Kadın',
-        'condition': 'Diyabet',
-        'lastVisit': '01.04.2025',
-      },
-      {
-        'name': 'Mehmet Kaya',
-        'age': 58,
-        'gender': 'Erkek',
-        'condition': 'Kalp Yetmezliği',
-        'lastVisit': '28.03.2025',
-      },
-      {
-        'name': 'Zeynep Öztürk',
-        'age': 29,
-        'gender': 'Kadın',
-        'condition': 'Astım',
-        'lastVisit': '05.04.2025',
-      },
-      {
-        'name': 'Ali Çelik',
-        'age': 41,
-        'gender': 'Erkek',
-        'condition': 'Migren',
-        'lastVisit': '02.04.2025',
-      },
-    ];
-
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: TextField(
-            decoration: InputDecoration(
-              hintText: 'Hasta Ara',
-              prefixIcon: const Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-          ),
-        ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: patients.length,
-            itemBuilder: (context, index) {
-              final patient = patients[index];
-              return Card(
-                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: ListTile(
-                  leading: CircleAvatar(
-                    child: Text((patient['name'] as String).substring(0, 1)),
-                  ),
-                  title: Text(patient['name'] as String),
-                  subtitle: Text(
-                    '${patient['age'] as String} yaş, ${patient['gender'] as String} - ${patient['condition'] as String}',
-                  ),
-                  trailing: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Son Ziyaret',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Theme.of(context).textTheme.bodySmall?.color,
-                        ),
-                      ),
-                      Text(
-                        patient['lastVisit'] as String,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  onTap: () {
-                    // TODO: Navigate to patient details
-                  },
-                ),
-              );
-            },
           ),
         ),
       ],
